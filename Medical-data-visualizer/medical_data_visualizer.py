@@ -28,29 +28,23 @@ def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
     df_cat = pd.melt(df, id_vars=['cardio'], value_vars=[
                      'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
-    #print(df_cat)
+    # print(df_cat)
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
     df_cat = pd.DataFrame(
-        df_cat.groupby(['cardio', 'variable',
-                        'value'])['value'].count()).rename(columns={
-                            'value': 'total'
-                        }).reset_index()
-    #print(df_cat)
+        df_cat.groupby(['cardio', 'variable', 'value'])['value'].count()).rename(columns={'value': 'total'}).reset_index()
+    # print(df_cat)
 
     # Draw the catplot with 'sns.catplot()'
-    f = sns.catplot(
-        x='variable',
-        y='total',
-        hue='value',
-        col='cardio',
-        data=df_cat,
-        kind='bar')
-    fig = f.fig 
+    f = sns.catplot(x='variable', y='total', hue='value',
+                    col='cardio', data=df_cat, kind='bar')
+    fig = f.fig
 
     # Do not modify the next two lines
-    fig.savefig(r'Data Analysis with Python-FCC.org\Medical-data-visualizer\catplot.png')
+    fig.savefig(
+        r'Data Analysis with Python-FCC.org\Medical-data-visualizer\catplot.png')
     return fig
+
 
 '''
 
