@@ -18,8 +18,6 @@ df = df[(df['value'] >= df['value'].quantile(0.025))
 def draw_line_plot():
     # Draw line plot
     fig, ax = plt.subplots(figsize=(20, 8))
-    df['year'] = df.index.year
-    df['month'] = df.index.month
     ax.set_xlabel('Date')
     ax.set_ylabel('Page Views')
     ax.set_title('Daily freeCodeCamp Forum Page Views 5/2016-12/2019')
@@ -32,7 +30,10 @@ def draw_line_plot():
 
 def draw_bar_plot():
     # Copy and modify data for monthly bar plot
-    df_bar = df.groupby(['year', 'month'])['value'].mean()
+    df_bar = df.copy()
+    df_bar["month"] = df_bar.index.month
+    df_bar["year"] = df_bar.index.year
+    df_bar = df_bar.groupby(['year', 'month'])['value'].mean()
     df_bar = df_bar.unstack()
 
     # Draw bar plot
