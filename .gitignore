@@ -1,5 +1,6 @@
-**\Demographic-data-analyzer\__pycache__
-**\Medical-data-visualizer\__pycache__
-**\Page-view-time-series-visualizer\__pycache__
-**Sea-level-predictor\__pycache__/
+**Demographic-data-analyzer/__pycache__/
+**Mean-variance-standard-deviation-calculator/__pycache__/
+**Medical-data-visualizer/__pycache__/
+**Page-view-time-series-visualizer/__pycache__/
+**Sea-level-predictor/__pycache__/
 *.py[cod]
